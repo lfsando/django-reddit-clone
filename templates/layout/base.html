@@ -1,0 +1,19 @@
+{% load static %}
+{% load random_numbers %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static "styles.css" %}?{% random_int 0 1000 %}">
+    <title>{% block title %}breddit: a página inicial da internet{% endblock %}</title>
+</head>
+
+<body>
+<div id="header">{% block header %}{% endblock %}</div>
+<div id="middle">
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="sidebar">{% block sidebar %}{% endblock %}</div>
+</div>
+{% block script %}{% endblock %}
+<script src="{% static "main.js" %}?{% random_int 0 1000 %}"></script>
+</body>
+</html>

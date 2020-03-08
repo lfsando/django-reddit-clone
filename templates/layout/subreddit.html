@@ -1,0 +1,6 @@
+{% extends "layout/base.html" %}
+{% block sidebar %}
+{% endblock %}
+{% block content %}
+    {% include "layout/posts.html" with posts=posts index=index user=user %}
+{% endblock content %}

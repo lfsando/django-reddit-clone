@@ -1,0 +1,22 @@
+<div class="arrows">
+    <div data-entryid="{{ votable.id }}" data-action="upvote" class="upvote-action">
+        {% if votable.custom_arrow_up %}
+            <img class="custom_upvote upvote" src="{{ MEDIA_URL }}{{ votable.custom_arrow_up }}" alt="custom upvote arrow"/>
+        {% else %}
+            <div class="arrow upvote">
+                <div class="arrow-body"></div>
+            </div>
+        {% endif %}
+    </div>
+    <p class="post__karma">{{ votable.total_votes.total }}</p>
+    <div data-entryid="{{ post.id }}" data-action="downvote" class="downvote-action">
+        {% if votable.custom_arrow_down %}
+            <img class="custom_downvote downvote" src="{{ MEDIA_URL }}{{ votable.custom_arrow_down }}"
+                 alt="custom downvote arrow"/>
+        {% else %}
+            <div class="arrow downvote">
+                <div class="arrow-body"></div>
+            </div>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,47 @@
+{% load vote_status %}
+{% load times_ago %}
+<div class="post" id="post-{{ post.id }}" data-karma="{{ post.total_votes.total }}"
+     data-status="{{ post|vote_status:user }}">
+
+    <div class="col post__index">
+        <p>{{ index }}</p>
+    </div>
+    <div class="col">
+        {% include "layout/vote_arrows.html" with votable=post user=user %}
+    </div>
+    <div class="col">
+        <a class="post__thumbnail">
+            <img width="{{ post.content.thumbnail.width }}" height="{{ post.content.thumbnail.height }}"
+                 alt="post thumbnail" src="{{ MEDIA_URL }}{{ post.content.thumbnail }}"/>
+        </a>
+    </div>
+    <div class="col">
+        <div class="post__title">
+            <a href="{{ post.link }}" class="post__title">{{ post.title }}</a>
+            {% if post.post_type == "SELF" %}
+                <a href="#" class="post__title_path">(self.{{ post.subreddit.name }})</a>
+            {% elif post.post_type == "LINK" %}
+                <a href="#" class="post__title_path">(link)</a>
+            {% endif %}
+        </div>
+        <ul class="post__tagline">
+            <li>
+                enviado {{ post.creation_date|times_ago }} por <a
+                    href="{{ post.creator.link }}">{{ post.creator.username }}</a>
+            </li>
+            <li>
+                <a href="{{ post.subreddit.link }}">
+                    b/{{ post.subreddit.name }}
+                </a>
+            </li>
+        </ul>
+        <ul class="post__footer">
+            <li>
+                <a href="{{ post.comments_link }}">{{ post.comments.count }} comentários</a>
+            </li>
+            <li>
+                <a href="{{ post.save_link }}">salvar</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div id="posts">
+    {% if posts.all %}
+        {% for post in posts %}
+            {% include "layout/post.html" with post=post index=forloop.counter user=user%}
+        {% endfor %}
+    {% else %}
+        <p class="error">parece que não há nada por aqui</p>
+    {% endif %}
+</div>

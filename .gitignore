@@ -1,0 +1,9 @@
+activate.ps1
+Pipfile.lock
+*.sqlite3
+node_modules
+.venv
+media/upload
+package-lock.json
+staticfiles
+.idea
